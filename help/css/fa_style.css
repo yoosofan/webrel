@@ -1,0 +1,23 @@
+body{
+    text-align: right;
+}
+#pageHeader {
+ right:8%;
+ }
+
+ #container {
+  }
+#sidebarContainer {
+    right:5px;
+}
+#sidebarContainer a{
+}
+a{
+}
+
+#contentContainer {
+ right:20%;
+}
+#language_link{
+left:30px;
+}
