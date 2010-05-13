@@ -23,12 +23,13 @@ a:hover, a:active {
 .clearer {    clear: both;}
 #pageHeader {
  position: relative;
- top:1px;
+ top:10px;
  text-align: center;
  background : #2F2F52;/*#3B3B76;/*#173517;/*#105A10;/* black;#E1EBF4;*/
  color:white; /*#233245;*/
  width:88%;
- height:50px;
+/* height:80px;*/
+/* padding: 5px;*/
 }
 #pageHeader img {
     float: left;
@@ -50,8 +51,8 @@ a:hover, a:active {
 
 
 #sidebarContainer {
-    position:relative;
-    top:20px;
+    position:fixed;
+    top:120px;
     width: 140px;
  background:#DAC298;/*#C1A778;/*#B0935F;/*#909090;*/
  color:#040402;/*#3E431E;/* black;/*#BB9E6F;/*#B2ABA0;/*#E9D0A4;/*#F1E0C2;/*#6f4714;*/
