@@ -1,3 +1,27 @@
+/*
+     webrel - Version 1.0
+    This file is part of webrel.
+
+    Copyright (C) 2010, Ahmad Yoosofan.  This software is distributed
+    under the terms of the GNU General Public License.
+
+    webrel is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    webrel is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with webrel.  If not, see <http://www.gnu.org/licenses/>.
+
+
+ */
+
+
 function init_tables()
 {action_table_schema=[":",",","INSERT","DELETE","UPDATE","DROP","VAR","DECIMAL","INTEGER","CHAR","BOOLEAN","SET","WHERE","TIMES","MINUS","SEMIJOIN","SEMIMINUS","RENAME","DIVIDEBY","RELATION","TUPLE","AS","WITH","EXTEND","ADD","SUMMARIZE","BY","ALL","BUT","PER","COUNT","SUM","AVG","MAX","MIN","AND","OR","XOR","UNION","INTERSECT","NOT","COUNTD","SUMD","AVGD","|","JOIN","TRUE","FALSE","STRING","Identifier","String","Integer","Float","{","}",";","=","/=",":=","<=",">=",">","<","+","-","/","*","(",")","#","$"];
 goto_table_schema=["statement_list'","statement","statement_list","assign","print","expression","target","insert","delete","update","variable_name","relvar_name","relation_exp","opt_where_condition","attribute_assign_commalist","simple_exp","attribute_assign","attribute_name","literal","relation","relation_wononproject","nonproject","opt_all_but","attribute_name_commalist","project","rename","union","intersect","minus","times","where","join","divide","semijoin","semiminus","extend","summrize","renaming","renaming_commalist","name_intro_commalist","with_exp","name_intro","introduced_name","extend_add_commalist","extend_add","compute_exp","summrize_add_commalist","summrize_add","tuple_exp_commalist","tuple_exp","tuple_attribute_commalist","tuple_attribute","type","summary_type","scalar_exp","summary_type_wocount","mul_exp","addop","or_exp","xor_exp","and_exp","not_exp","rel_exp","add_exp","compop","primary_exp","mulop","identifier","agg_op_inv","type_name","string","integer","float","boolean"]
