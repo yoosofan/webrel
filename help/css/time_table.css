@@ -2,7 +2,11 @@
      webrel - Version 1.0
     This file is part of webrel.
 
-    Copyright (C) 2010, Ahmad Yoosofan.  This software is distributed
+    Copyright (C) 2010, Ahmad Yoosofan.  
+    Thanks to 
+	  	Sara Izadi (former co-developer)
+
+    This software is distributed
     under the terms of the GNU General Public License.
 
     webrel is free software: you can redistribute it and/or modify

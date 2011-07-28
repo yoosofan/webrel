@@ -2,7 +2,11 @@
      webrel - Version 1.0
     This file is part of webrel.
 
-    Copyright (C) 2010, Ahmad Yoosofan.  This software is distributed
+    Copyright (C) 2010, Ahmad Yoosofan.  
+    Thanks to 
+	  	Sara Izadi (former co-developer)
+
+    This software is distributed
     under the terms of the GNU General Public License.
 
     webrel is free software: you can redistribute it and/or modify
@@ -3985,6 +3989,7 @@ function double_schema(index,maxi,double_array,t_type)
       for(var t=0;t<maxi;t++)
          if(double_array[0][t].toLowerCase()==index.toLowerCase())
             if(double_array[1][t].toLowerCase()==t_type.toLowerCase())
+
                return true;
       return false;
 }
