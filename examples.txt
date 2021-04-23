@@ -1,4 +1,4 @@
-s{pname};
+s{sname};
 
 ((s{s#} divideby p{p#} per sp{s#,P#})join s){sname};
 
