@@ -1,5 +1,9 @@
 s{sname};
 
+p{pname, city};
+
+p{city} union s{city}
+
 ((s{s#} divideby p{p#} per sp{s#,P#})join s){sname};
 
 ((p rename CITY as s)join s)where CITY=s;
