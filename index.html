@@ -439,7 +439,7 @@ function cancel()
         <label></label>           </td>
     </tr>
     <tr>
-      <td colspan="4"><textarea name="code" cols="255" rows="2" id="textarea" style="width: 80%;">Please enter your code here!</textarea></td>
+      <td colspan="4"><textarea name="code" cols="255" rows="3" id="textarea" style="width: 80%;" autofocus="autofocus" placeholder="Enter you code here. like:\np{pname}; \nThen press Ctrl+Enter or Click on Run button" ></textarea></td>
     </tr>
     <tr>
       <td width="50%"><input type="checkbox" name="checkbox" value="checkbox">
@@ -489,6 +489,15 @@ function cancel()
 </form>
 <script language="javascript">
 init_tables();
+var textAreas = document.getElementsByTagName('textarea');
+textAreas[0].onkeyup = function (e) {
+  var evt = window.event || e;   
+    if ((event.keyCode == 10 || event.keyCode == 13) && event.ctrlKey)
+      execute();
+}
+Array.prototype.forEach.call(textAreas, function(elem) {
+    elem.placeholder = elem.placeholder.replace(/\\n/g, '\n');
+});
 </script>
 </body>
 </html>
