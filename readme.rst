@@ -248,8 +248,6 @@ The following files:
       img/COPYING
       img/logo1.jpg
       img/README
-      img/result.gif
-      img/show_drop.gif
 
       src/coloredtable.js
       src/COPYING
