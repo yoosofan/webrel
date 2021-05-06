@@ -363,48 +363,57 @@ ul.auto-toc {
 <div class="document" id="examples">
 <h1 class="title">Examples</h1>
 
-<pre class="code sql literal-block">
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Find the names of suppliers</dt>
+<dd><pre class="code sql first last literal-block">
 <span class="name">s</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
 </pre>
-<pre class="code sql literal-block">
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Find the names and cities of parts</dt>
+<dd><pre class="code sql first last literal-block">
 <span class="name">p</span><span class="error">{</span><span class="name">pname</span><span class="punctuation">,</span> <span class="name">city</span><span class="error">}</span><span class="punctuation">;</span>
 </pre>
-<pre class="code sql literal-block">
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Find the cities of parts and suppliers</dt>
+<dd><pre class="code sql first last literal-block">
 <span class="name">p</span><span class="error">{</span><span class="name">city</span><span class="error">}</span> <span class="keyword">union</span> <span class="name">s</span><span class="error">{</span><span class="name">city</span><span class="error">}</span>
 </pre>
-<pre class="code sql literal-block">
-<span class="punctuation">((</span><span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">divideby</span> <span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="name">per</span> <span class="name">sp</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="punctuation">((</span><span class="name">p</span> <span class="keyword">rename</span> <span class="name">CITY</span> <span class="keyword">as</span> <span class="name">s</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span><span class="keyword">where</span> <span class="name">CITY</span><span class="operator">=</span><span class="name">s</span><span class="punctuation">;</span>
-</pre>
+</dd>
+</dl>
+</li>
+<li><p class="first">Find the renamed sn as s_num of sp</p>
+<blockquote>
 <pre class="code sql literal-block">
 <span class="name">sp</span> <span class="keyword">rename</span> <span class="punctuation">(</span><span class="name">sn</span> <span class="keyword">as</span> <span class="name">s_num</span> <span class="punctuation">,</span><span class="name">pn</span> <span class="keyword">as</span> <span class="name">p_num</span><span class="punctuation">);</span>
 </pre>
+</blockquote>
+</li>
+<li><p class="first">Find the renamed sn as s_num and pn as p_num of sp</p>
+<blockquote>
 <pre class="code sql literal-block">
-<span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">divideby</span> <span class="punctuation">(</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">sn</span><span class="operator">=</span><span class="literal string symbol">&quot;s2&quot;</span><span class="punctuation">)</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="name">per</span> <span class="name">sp</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">;</span>
+<span class="name">sp</span> <span class="keyword">rename</span> <span class="punctuation">(</span><span class="name">sn</span> <span class="keyword">as</span> <span class="name">s_num</span> <span class="punctuation">,</span><span class="name">pn</span> <span class="keyword">as</span> <span class="name">p_num</span><span class="punctuation">);</span>
+</pre>
+</blockquote>
+</li>
+</ol>
+<pre class="code sql literal-block">
+<span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="punctuation">,</span> <span class="name">pname</span><span class="error">}</span> <span class="name">times</span> <span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span> <span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="punctuation">((</span><span class="name">p</span> <span class="keyword">rename</span> <span class="name">CITY</span> <span class="keyword">as</span> <span class="name">pcity</span><span class="punctuation">)</span> <span class="name">times</span> <span class="name">s</span><span class="punctuation">)</span> <span class="keyword">where</span> <span class="name">CITY</span> <span class="operator">=</span> <span class="name">pcity</span><span class="punctuation">;</span>
 </pre>
 <pre class="code sql literal-block">
 <span class="punctuation">(((</span><span class="name">s</span> <span class="keyword">rename</span> <span class="name">sn</span> <span class="keyword">as</span> <span class="name">sa</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sa</span><span class="punctuation">,</span><span class="name">city</span><span class="error">}</span> <span class="keyword">join</span> <span class="punctuation">(</span><span class="name">s</span> <span class="keyword">rename</span> <span class="name">sn</span> <span class="keyword">as</span> <span class="name">sb</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sb</span><span class="punctuation">,</span><span class="name">city</span><span class="error">}</span><span class="punctuation">)</span><span class="keyword">where</span> <span class="name">sa</span><span class="operator">&lt;</span><span class="name">sb</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sa</span><span class="punctuation">,</span><span class="name">sb</span><span class="error">}</span><span class="punctuation">;</span>
 </pre>
 <pre class="code sql literal-block">
-<span class="keyword">with</span> <span class="punctuation">(</span><span class="name">s</span> <span class="keyword">rename</span> <span class="name">sn</span> <span class="keyword">as</span> <span class="name">sa</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sa</span><span class="punctuation">,</span><span class="name">city</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t1</span><span class="punctuation">,</span>
-  <span class="punctuation">(</span><span class="name">s</span> <span class="keyword">rename</span> <span class="name">sn</span> <span class="keyword">as</span> <span class="name">sb</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sb</span><span class="punctuation">,</span><span class="name">city</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t2</span><span class="punctuation">,</span>
-  <span class="name">t1</span> <span class="keyword">join</span> <span class="name">t2</span> <span class="keyword">as</span> <span class="name">t3</span><span class="punctuation">,</span>
-  <span class="name">t3</span> <span class="keyword">where</span> <span class="name">sa</span><span class="operator">&lt;</span><span class="name">sb</span> <span class="keyword">as</span> <span class="name">t4</span><span class="punctuation">:</span>
-  <span class="name">t4</span><span class="error">{</span><span class="name">sa</span><span class="punctuation">,</span><span class="name">sb</span><span class="error">}</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
 <span class="punctuation">((</span><span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">minus</span> <span class="punctuation">(</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P2&quot;</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span><span class="punctuation">)</span> <span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="keyword">with</span> <span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t1</span><span class="punctuation">,</span>
-  <span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P1&quot;</span> <span class="keyword">as</span> <span class="name">t2</span><span class="punctuation">,</span>
-  <span class="name">t2</span> <span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t3</span><span class="punctuation">,</span>
-  <span class="name">t1</span> <span class="name">minus</span> <span class="name">t3</span> <span class="keyword">as</span> <span class="name">t4</span><span class="punctuation">,</span>
-  <span class="name">t4</span> <span class="keyword">join</span> <span class="name">s</span> <span class="keyword">as</span> <span class="name">t5</span><span class="punctuation">,</span>
-  <span class="name">t5</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t6</span><span class="punctuation">:</span>
-  <span class="name">t6</span><span class="punctuation">;</span>
 </pre>
 <pre class="code sql literal-block">
 <span class="punctuation">((</span><span class="name">sp</span> <span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P2&quot;</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
@@ -413,58 +422,7 @@ ul.auto-toc {
 <span class="punctuation">((</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P2&quot;</span><span class="punctuation">)</span> <span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
 </pre>
 <pre class="code sql literal-block">
-<span class="name">s</span> <span class="name">semijoin</span> <span class="punctuation">(</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P2&quot;</span><span class="punctuation">);</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">s</span> <span class="name">semiminus</span> <span class="punctuation">(</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P2&quot;</span><span class="punctuation">);</span>
-</pre>
-<pre class="code sql literal-block">
 <span class="punctuation">(</span><span class="name">s</span> <span class="keyword">join</span> <span class="punctuation">(</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P2&quot;</span><span class="punctuation">))</span><span class="error">{</span><span class="name">CITY</span><span class="punctuation">,</span><span class="name">SNAME</span><span class="punctuation">,</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">STATUS</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">extend</span> <span class="name">p</span> <span class="keyword">add</span> <span class="name">weight</span> <span class="operator">*</span> <span class="literal number integer">10</span> <span class="keyword">as</span> <span class="name">gmwt</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="punctuation">(</span><span class="name">extend</span> <span class="name">p</span> <span class="keyword">add</span> <span class="name">weight</span> <span class="operator">*</span> <span class="literal number integer">10</span> <span class="keyword">as</span> <span class="name">GMWT</span><span class="punctuation">)</span> <span class="keyword">where</span> <span class="name">COLOR</span><span class="operator">=</span><span class="literal string symbol">&quot;Red&quot;</span> <span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">extend</span> <span class="name">s</span> <span class="keyword">add</span> <span class="literal string symbol">&quot;suplier&quot;</span> <span class="keyword">as</span> <span class="name">tag</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">extend</span> <span class="name">s</span> <span class="keyword">add</span> <span class="punctuation">(</span><span class="literal string symbol">&quot;suplier&quot;</span> <span class="keyword">as</span> <span class="name">tag</span> <span class="punctuation">,</span> <span class="name">status</span><span class="operator">*</span><span class="literal number integer">5</span> <span class="keyword">as</span> <span class="name">jh</span><span class="punctuation">);</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">extend</span> <span class="punctuation">(</span><span class="name">p</span> <span class="keyword">join</span> <span class="name">sp</span><span class="punctuation">)</span> <span class="keyword">add</span> <span class="name">weight</span><span class="operator">*</span> <span class="literal number integer">10</span> <span class="keyword">as</span> <span class="name">shi</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="punctuation">(</span><span class="name">extend</span> <span class="name">s</span> <span class="keyword">add</span> <span class="name">city</span> <span class="keyword">as</span> <span class="name">ccity</span><span class="punctuation">)</span><span class="error">{</span><span class="keyword">All</span> <span class="name">but</span> <span class="name">city</span><span class="error">}</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">extend</span> <span class="name">s</span> <span class="keyword">add</span> <span class="keyword">count</span> <span class="punctuation">((</span><span class="name">sp</span> <span class="keyword">rename</span> <span class="name">sn</span> <span class="keyword">as</span> <span class="name">x</span><span class="punctuation">)</span> <span class="punctuation">)</span><span class="keyword">as</span> <span class="name">np</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">summarize</span> <span class="name">sp</span> <span class="name">per</span> <span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="keyword">add</span> <span class="keyword">sum</span> <span class="punctuation">(</span><span class="name">QTY</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">tq</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">summarize</span> <span class="punctuation">(</span><span class="name">p</span> <span class="keyword">join</span> <span class="name">sp</span><span class="punctuation">)</span> <span class="name">per</span> <span class="name">p</span><span class="error">{</span><span class="name">city</span><span class="error">}</span> <span class="keyword">add</span> <span class="keyword">sum</span><span class="punctuation">(</span><span class="name">qty</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">nsp</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">summarize</span> <span class="name">sp</span> <span class="name">per</span> <span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="keyword">add</span> <span class="keyword">count</span> <span class="keyword">as</span> <span class="name">np</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">summarize</span> <span class="name">sp</span> <span class="name">per</span> <span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="keyword">add</span><span class="punctuation">(</span><span class="keyword">sum</span><span class="punctuation">(</span><span class="name">qty</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">tq1</span><span class="punctuation">,</span><span class="keyword">avg</span><span class="punctuation">(</span><span class="name">qty</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">tq2</span><span class="punctuation">);</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">summarize</span> <span class="name">s</span> <span class="name">per</span> <span class="name">s</span><span class="error">{</span><span class="name">city</span><span class="error">}</span> <span class="keyword">add</span> <span class="keyword">avg</span> <span class="punctuation">(</span><span class="name">status</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">avg_status</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="punctuation">(</span><span class="name">p</span> <span class="keyword">where</span> <span class="name">WEIGHT</span><span class="operator">&gt;</span><span class="literal number integer">12</span><span class="punctuation">)</span><span class="error">{</span><span class="name">PNAME</span><span class="error">}</span><span class="keyword">union</span> <span class="punctuation">((((</span><span class="name">sp</span> <span class="keyword">join</span> <span class="name">p</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span> <span class="keyword">where</span> <span class="name">STATUS</span><span class="operator">&gt;</span><span class="literal number integer">20</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">p</span><span class="punctuation">)</span><span class="error">{</span><span class="name">PNAME</span><span class="error">}</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">divideby</span> <span class="punctuation">(</span><span class="name">p</span> <span class="keyword">where</span> <span class="name">color</span><span class="operator">=</span><span class="literal string symbol">&quot;Red&quot;</span><span class="punctuation">)</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="name">per</span> <span class="name">sp</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">;</span>
-</pre>
-<pre class="code sql literal-block">
-<span class="punctuation">(</span><span class="name">spj</span> <span class="keyword">join</span> <span class="punctuation">(</span><span class="name">s</span> <span class="keyword">where</span> <span class="name">city</span><span class="operator">=</span><span class="literal string symbol">&quot;London&quot;</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span><span class="punctuation">)</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="keyword">join</span> <span class="name">p</span><span class="punctuation">;</span>
 </pre>
 <pre class="code sql literal-block">
 <span class="punctuation">(</span><span class="name">s</span> <span class="name">times</span> <span class="punctuation">(</span><span class="name">j</span> <span class="keyword">rename</span> <span class="name">city</span> <span class="keyword">as</span> <span class="name">jcity</span><span class="punctuation">))</span><span class="keyword">where</span> <span class="name">city</span><span class="operator">=</span><span class="name">jcity</span><span class="punctuation">;</span>
@@ -476,7 +434,10 @@ ul.auto-toc {
 <span class="punctuation">((</span><span class="name">s</span> <span class="keyword">join</span> <span class="name">j</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">jn</span><span class="error">}</span> <span class="keyword">join</span> <span class="name">spj</span><span class="punctuation">)</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">;</span>
 </pre>
 <pre class="code sql literal-block">
-<span class="punctuation">((</span><span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">divideby</span> <span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="name">per</span> <span class="name">sp</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
+<span class="punctuation">(</span><span class="name">spj</span> <span class="keyword">join</span> <span class="punctuation">(</span><span class="name">s</span> <span class="keyword">where</span> <span class="name">city</span><span class="operator">=</span><span class="literal string symbol">&quot;London&quot;</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span><span class="punctuation">)</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="keyword">join</span> <span class="name">p</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="punctuation">(</span><span class="name">p</span> <span class="keyword">where</span> <span class="name">WEIGHT</span><span class="operator">&gt;</span><span class="literal number integer">12</span><span class="punctuation">)</span><span class="error">{</span><span class="name">PNAME</span><span class="error">}</span><span class="keyword">union</span> <span class="punctuation">((((</span><span class="name">sp</span> <span class="keyword">join</span> <span class="name">p</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span> <span class="keyword">where</span> <span class="name">STATUS</span><span class="operator">&gt;</span><span class="literal number integer">20</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">p</span><span class="punctuation">)</span><span class="error">{</span><span class="name">PNAME</span><span class="error">}</span><span class="punctuation">;</span>
 </pre>
 <pre class="code sql literal-block">
 <span class="name">a</span><span class="punctuation">:</span><span class="operator">=</span><span class="name">RELATION</span> <span class="error">{</span><span class="name">TUPLE</span><span class="error">{</span><span class="name">pn</span> <span class="name">pn</span> <span class="punctuation">(</span><span class="literal string symbol">&quot;p1&quot;</span><span class="punctuation">)</span><span class="error">}}</span><span class="punctuation">;</span>
@@ -517,6 +478,76 @@ ul.auto-toc {
 </pre>
 <pre class="code sql literal-block">
 <span class="name">p</span> <span class="keyword">where</span> <span class="name">city</span><span class="operator">=</span><span class="literal string symbol">&quot;london&quot;</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="keyword">with</span> <span class="punctuation">(</span><span class="name">s</span> <span class="keyword">rename</span> <span class="name">sn</span> <span class="keyword">as</span> <span class="name">sa</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sa</span><span class="punctuation">,</span><span class="name">city</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t1</span><span class="punctuation">,</span>
+  <span class="punctuation">(</span><span class="name">s</span> <span class="keyword">rename</span> <span class="name">sn</span> <span class="keyword">as</span> <span class="name">sb</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sb</span><span class="punctuation">,</span><span class="name">city</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t2</span><span class="punctuation">,</span>
+  <span class="name">t1</span> <span class="keyword">join</span> <span class="name">t2</span> <span class="keyword">as</span> <span class="name">t3</span><span class="punctuation">,</span>
+  <span class="name">t3</span> <span class="keyword">where</span> <span class="name">sa</span><span class="operator">&lt;</span><span class="name">sb</span> <span class="keyword">as</span> <span class="name">t4</span><span class="punctuation">:</span>
+  <span class="name">t4</span><span class="error">{</span><span class="name">sa</span><span class="punctuation">,</span><span class="name">sb</span><span class="error">}</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="keyword">with</span> <span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t1</span><span class="punctuation">,</span>
+  <span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P1&quot;</span> <span class="keyword">as</span> <span class="name">t2</span><span class="punctuation">,</span>
+  <span class="name">t2</span> <span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t3</span><span class="punctuation">,</span>
+  <span class="name">t1</span> <span class="name">minus</span> <span class="name">t3</span> <span class="keyword">as</span> <span class="name">t4</span><span class="punctuation">,</span>
+  <span class="name">t4</span> <span class="keyword">join</span> <span class="name">s</span> <span class="keyword">as</span> <span class="name">t5</span><span class="punctuation">,</span>
+  <span class="name">t5</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span> <span class="keyword">as</span> <span class="name">t6</span><span class="punctuation">:</span>
+  <span class="name">t6</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">s</span> <span class="name">semijoin</span> <span class="punctuation">(</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P2&quot;</span><span class="punctuation">);</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">s</span> <span class="name">semiminus</span> <span class="punctuation">(</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">pn</span><span class="operator">=</span><span class="literal string symbol">&quot;P2&quot;</span><span class="punctuation">);</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">divideby</span> <span class="punctuation">(</span><span class="name">sp</span> <span class="keyword">where</span> <span class="name">sn</span><span class="operator">=</span><span class="literal string symbol">&quot;s2&quot;</span><span class="punctuation">)</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="name">per</span> <span class="name">sp</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="punctuation">((</span><span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">divideby</span> <span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="name">per</span> <span class="name">sp</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">extend</span> <span class="name">p</span> <span class="keyword">add</span> <span class="name">weight</span> <span class="operator">*</span> <span class="literal number integer">10</span> <span class="keyword">as</span> <span class="name">gmwt</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="punctuation">(</span><span class="name">extend</span> <span class="name">p</span> <span class="keyword">add</span> <span class="name">weight</span> <span class="operator">*</span> <span class="literal number integer">10</span> <span class="keyword">as</span> <span class="name">GMWT</span><span class="punctuation">)</span> <span class="keyword">where</span> <span class="name">COLOR</span><span class="operator">=</span><span class="literal string symbol">&quot;Red&quot;</span> <span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">extend</span> <span class="name">s</span> <span class="keyword">add</span> <span class="literal string symbol">&quot;suplier&quot;</span> <span class="keyword">as</span> <span class="name">tag</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">extend</span> <span class="name">s</span> <span class="keyword">add</span> <span class="punctuation">(</span><span class="literal string symbol">&quot;suplier&quot;</span> <span class="keyword">as</span> <span class="name">tag</span> <span class="punctuation">,</span> <span class="name">status</span><span class="operator">*</span><span class="literal number integer">5</span> <span class="keyword">as</span> <span class="name">jh</span><span class="punctuation">);</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">extend</span> <span class="punctuation">(</span><span class="name">p</span> <span class="keyword">join</span> <span class="name">sp</span><span class="punctuation">)</span> <span class="keyword">add</span> <span class="name">weight</span><span class="operator">*</span> <span class="literal number integer">10</span> <span class="keyword">as</span> <span class="name">shi</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="punctuation">(</span><span class="name">extend</span> <span class="name">s</span> <span class="keyword">add</span> <span class="name">city</span> <span class="keyword">as</span> <span class="name">ccity</span><span class="punctuation">)</span><span class="error">{</span><span class="keyword">All</span> <span class="name">but</span> <span class="name">city</span><span class="error">}</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">extend</span> <span class="name">s</span> <span class="keyword">add</span> <span class="keyword">count</span> <span class="punctuation">((</span><span class="name">sp</span> <span class="keyword">rename</span> <span class="name">sn</span> <span class="keyword">as</span> <span class="name">x</span><span class="punctuation">)</span> <span class="punctuation">)</span><span class="keyword">as</span> <span class="name">np</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">summarize</span> <span class="name">sp</span> <span class="name">per</span> <span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="keyword">add</span> <span class="keyword">sum</span> <span class="punctuation">(</span><span class="name">QTY</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">tq</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">summarize</span> <span class="punctuation">(</span><span class="name">p</span> <span class="keyword">join</span> <span class="name">sp</span><span class="punctuation">)</span> <span class="name">per</span> <span class="name">p</span><span class="error">{</span><span class="name">city</span><span class="error">}</span> <span class="keyword">add</span> <span class="keyword">sum</span><span class="punctuation">(</span><span class="name">qty</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">nsp</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">summarize</span> <span class="name">sp</span> <span class="name">per</span> <span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="keyword">add</span> <span class="keyword">count</span> <span class="keyword">as</span> <span class="name">np</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">summarize</span> <span class="name">sp</span> <span class="name">per</span> <span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="keyword">add</span><span class="punctuation">(</span><span class="keyword">sum</span><span class="punctuation">(</span><span class="name">qty</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">tq1</span><span class="punctuation">,</span><span class="keyword">avg</span><span class="punctuation">(</span><span class="name">qty</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">tq2</span><span class="punctuation">);</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">summarize</span> <span class="name">s</span> <span class="name">per</span> <span class="name">s</span><span class="error">{</span><span class="name">city</span><span class="error">}</span> <span class="keyword">add</span> <span class="keyword">avg</span> <span class="punctuation">(</span><span class="name">status</span><span class="punctuation">)</span> <span class="keyword">as</span> <span class="name">avg_status</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">divideby</span> <span class="punctuation">(</span><span class="name">p</span> <span class="keyword">where</span> <span class="name">color</span><span class="operator">=</span><span class="literal string symbol">&quot;Red&quot;</span><span class="punctuation">)</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="name">per</span> <span class="name">sp</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">;</span>
+</pre>
+<pre class="code sql literal-block">
+<span class="punctuation">((</span><span class="name">s</span><span class="error">{</span><span class="name">sn</span><span class="error">}</span> <span class="name">divideby</span> <span class="name">p</span><span class="error">{</span><span class="name">pn</span><span class="error">}</span> <span class="name">per</span> <span class="name">sp</span><span class="error">{</span><span class="name">sn</span><span class="punctuation">,</span><span class="name">pn</span><span class="error">}</span><span class="punctuation">)</span><span class="keyword">join</span> <span class="name">s</span><span class="punctuation">)</span><span class="error">{</span><span class="name">sname</span><span class="error">}</span><span class="punctuation">;</span>
 </pre>
 <!-- :
 
