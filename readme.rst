@@ -44,7 +44,7 @@ Getting Started
 #.  Open https://yoosofan.github.io/webrel/ on any web browser (new or old even IE6).
 #.  Type your query in the text area and click **Run**.
 
-Some Sample Queries
+Sample Queries
 -------------------
 #. Find the names of suppliers
     .. code:: sql
@@ -270,4 +270,6 @@ Authors
 
 Reference
 ---------
-*Yoosofan, A., & Izadi, S. (2010). Construction of a Language Interpreter and Integrated Development Environment for Book-Notation Relational Algebra. 1st Regional Conference on Research in Electrical Technology, IAUN.*
+`Yoosofan, A., & Izadi, S. (2010). Construction of a Language Interpreter and Integrated Development Environment for Book-Notation Relational Algebra. 1st Regional Conference on Research in Electrical Technology, IAUN.
+<https://yoosofan.github.io/files/yoosofan_bibliography/conference/13890930.Relational_Algebra_interpreter.NajafAbad.pdf>`_
+
