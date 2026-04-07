@@ -265,8 +265,8 @@ Sample Queries
 
 Authors
 -------
-* **Ahmad Yoosofan**
-* **Sara Izadi**
+* `Ahmad Yoosofan <https://yoosofan.github.io/en/>`_
+* `Sara Izadi <https://www.linkedin.com/in/sara-izadi-b20bb13a/>`_
 
 Reference
 ---------
