@@ -59,7 +59,7 @@ Sample Queries
 #. Find the cities of parts and suppliers
     .. code:: sql
 
-      p{city} union s{city}
+      p{city} union s{city;
 
 #. Find the renamed sn as s_num of sp
 

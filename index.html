@@ -8,8 +8,8 @@
      webrel - Version 1.0
     This file is part of webrel.
 
-    Copyright (C) 2010, Ahmad Yoosofan.  
-    Thanks to 
+    Copyright (C) 2010, Ahmad Yoosofan.
+    Thanks to
   		Sara Izadi (former co-developer)
 
     This software is distributed
@@ -33,20 +33,20 @@
 <script language="javascript">
 //_______________________Add_jsFiles_________________________________
 </script>
-<script language="javascript" src="src/initi.js"></script>
-<script language="javascript" src="src/token.js"></script>
-<script language="javascript" src="src/lexic.js"></script>
-<script language="javascript" src="src/relation.js"></script>
-<script language="javascript" src="src/syntax.js"></script>
-<script language="javascript" src="src/type.js"></script>
-<script language="javascript" src="src/value_table.js"></script>
-<script language="javascript" src="src/stack.js"></script>
-<script language="javascript" src="src/table.js"></script>
-<script language="javascript" src="src/coloredtable.js"></script>
-<script language="javascript" src="src/shift_reduce.js"></script>
-<script language="javascript" src="DB/bookDB.js"></script>
-<script language="javascript" src="DB/med.js"></script>
-<script language="javascript" src="DB/spno.js"></script>
+<script language="javascript" src="src/old/initi.js"></script>
+<script language="javascript" src="src/old/token.js"></script>
+<script language="javascript" src="src/old/lexic.js"></script>
+<script language="javascript" src="src/old/relation.js"></script>
+<script language="javascript" src="src/old/syntax.js"></script>
+<script language="javascript" src="src/old/type.js"></script>
+<script language="javascript" src="src/old/value_table.js"></script>
+<script language="javascript" src="src/old/stack.js"></script>
+<script language="javascript" src="src/old/table.js"></script>
+<script language="javascript" src="src/old/coloredtable.js"></script>
+<script language="javascript" src="src/old/shift_reduce.js"></script>
+<script language="javascript" src="src/old/DB/bookDB.js"></script>
+<script language="javascript" src="src/old/DB/med.js"></script>
+<script language="javascript" src="src/old/DB/spno.js"></script>
 <script language="javascript">
 //___________________________________________________________________
 </script>
@@ -430,7 +430,7 @@ function cancel()
 				    Sara Izadi
 		  	 </td>
         </tr>
-         
+
       </table>
         <label></label>           </td>
     </tr>
@@ -496,7 +496,7 @@ function cancel()
 init_tables();
 var textAreas = document.getElementsByTagName('textarea');
 textAreas[0].onkeyup = function (e) {
-  var evt = window.event || e;   
+  var evt = window.event || e;
     if ((event.keyCode == 10 || event.keyCode == 13) && event.ctrlKey)
       execute();
 }
