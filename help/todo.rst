@@ -1,3 +1,18 @@
+Some samples 2026/04/09 23:53:34
+********************************
+https://github.com/phorward/unicc
+https://github.com/viur-framework/logics/tree/main/logics-js
+https://github.com/viur-framework/logics/blob/main/logics-js/logics.js
+https://github.com/viur-framework/logics/blob/main/logics-js/logics.html
+https://github.com/phorward/unicc/blob/main/examples/expr.js.par
+http://downloads.phorward-software.com/unicc/unicc.pdf
+
+https://phorward.dev/
+https://github.com/phorward?tab=repositories
+https://github.com/abrobston/jscc
+https://jscc.brobston.com/
+
+
 Grok 2026/04/09 02:00:16
 ************************
 
